@@ -7,7 +7,7 @@ Personal collection of Claude skills for use with Claude Code and Cowork.
 ### Table Clay (Brand)
 | Skill | Description |
 |-------|-------------|
-| **tableclay-instagram-engagement** | Automated Instagram engagement: 15 follows/likes and 5 comments per session via Explore tab discovery. |
+| **social-media-engagement** | Automated social media engagement across Instagram and Facebook: follows, likes/reactions, comments, and Group participation via browser automation with swappable brand context. |
 | **native-image-ad-generator** | Creates native-looking image ads for social media campaigns. |
 | **product-placer** | Places product images into contextual lifestyle settings. |
 | **ad-swipe-engine** | Captures and analyzes competitor ads for creative inspiration. |
@@ -65,12 +65,13 @@ claude-skills/
 │   ├── agents/
 │   ├── references/
 │   └── scripts/
-├── survey-document-builder/
+├── social-media-engagement/
 │   ├── SKILL.md
-│   └── references/
-└── tableclay-instagram-engagement/
+│   ├── references/
+│   └── engagement-log.csv
+└── survey-document-builder/
     ├── SKILL.md
-    └── engagement-log.csv
+    └── references/
 ```
 
 ## Setup
@@ -108,4 +109,4 @@ Skills in this repo can be loaded into Cowork by placing them in the Cowork skil
 - `references/` folders contain supporting docs that SKILL.md can reference
 - `assets/` folders contain templates and reusable content
 - `scripts/` folders contain executable helper scripts
-- The `engagement-log.csv` in tableclay-instagram-engagement is a persistent session tracker (will grow over time)
+- The `engagement-log.csv` in social-media-engagement is a persistent session tracker across both Instagram and Facebook (will grow over time)
