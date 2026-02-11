@@ -39,6 +39,8 @@ Critical: Notes capture **what the client said and what emerged from discussion*
 
 **Read `references/content-quality.md` for detailed guidance on what makes content useful.**
 
+**If `references/learned-preferences.md` has any entries, read it.** These are preferences extracted from user-refined notes and represent what the user actually wants. Where they conflict with the base rules, follow the learned preferences.
+
 Extract:
 - Client reactions to presented material
 - Questions raised and how addressed (with underlying concerns)
@@ -155,3 +157,11 @@ Generate a .docx file with filename format:
 `[Client Name] [Meeting Type] [External/Internal] [Date].docx`
 
 Example: `Henkel WSI Demand Spaces & Drivers External 1.28.26.docx`
+
+## Learning from Refined Notes
+
+When the user uploads a refined/edited version of notes — or says they've adjusted the output and want the skill to learn — read `learning/LEARN.md` and follow the learning workflow.
+
+**Trigger phrases:** "learn from these notes", "I edited the notes", "here's the final version", "train on this", "refine the skill", "I made some changes to the notes"
+
+The learning workflow extracts preferences from the user's refinements and saves them to `references/learned-preferences.md`, which this skill reads during future note generation (see Step 3). This creates a feedback loop where each set of refined notes makes future outputs better.
