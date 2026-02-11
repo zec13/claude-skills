@@ -217,11 +217,67 @@ If visible:
 - After selection: <fulfillment method> = <in-store>
 ```
 
+## Pattern 10: Backward-Tracing Piped Variables to Force Specific Selections
+
+When a variable is NOT in the test matrix but gets piped into many downstream questions, you must trace backward to identify the required selection.
+
+### Example: Product Variable Not in Matrix but Piped Everywhere
+The test matrix specifies `<brand>=Ocean Spray` but does NOT specify `<product>`. However, downstream questions Q301-Q411 all reference "Ocean Spray cranberry" — meaning `<product>` must equal "cranberry".
+
+**Step 1**: Identify that "cranberry" appears in downstream piping
+**Step 2**: Trace `<product>` back to the question that assigns it (e.g., S17 Products)
+**Step 3**: Look at S17's response table: R1=Cranberry, R2=Cranberry blends, R3=Apple...
+**Step 4**: Select R1 at S17 to assign `<product>=cranberry`
+
+```
+**S17 – Products**
+- Ensure "Other, please specify" is anchored at bottom
+- Ensure "Ocean Spray" is piped through
+- Ensure multi select for C1 and single select for C2
+- Ensure R1 & R2 are together
+- Ensure R3 & R4 are together
+- Ensure R8 & R9 are together
+- Select R1 and any others in C1
+- Select R1 in C2
+- Ensure assigned <product> = cranberry
+```
+
+**DON'T** write "Select any" at S17 just because `<product>` isn't in the test matrix. That makes all downstream piping unverifiable.
+
+## Pattern 11: Conditional Response Options — Count R# from FULL Table
+
+When a question shows different response options based on a variable, R# numbers come from the FULL table.
+
+### Example: Retailer Question with Channel-Conditional Display
+The survey document lists retailers in one table:
+```
+R1: Target (<Mass>)
+R2: Walmart (<Mass>)
+R3: Other mass (<Mass>)
+R4: Publix (<Grocery>)
+R5: Meijer (<Grocery>)
+R6: Kroger (<Grocery>)
+...
+```
+
+For a path where `<Channel>=Grocery`, only grocery options are visible. But Meijer is still R5, NOT R2.
+
+```
+**S21 – Retailer**
+- Ensure "Other, please specify" is anchored at bottom
+- Ensure "Ocean Spray cranberry" is piped through
+- Ensure you only see response options for <Grocery>
+- Select R5
+- Ensure assigned <retailer>=Meijer
+```
+
+**DON'T** renumber visible options starting from R1. The R# is the position in the FULL response table.
+
 ## Anti-Patterns to Avoid
 
 **DON'T write vague ensure checks:**
 - BAD: "Ensure piping works correctly"
-- GOOD: "Ensure question reads 'How often do you drink Ocean Spray shelf-stable juice?'"
+- GOOD: "Ensure 'Ocean Spray cranberry' is piped through"
 
 **DON'T forget termination implications:**
 - BAD: "Select any" (when R3 triggers termination)
@@ -229,7 +285,7 @@ If visible:
 
 **DON'T use variable names instead of actual values in pipe checks:**
 - BAD: "Ensure question pipes <brand>"
-- GOOD: "Ensure question reads '...Ocean Spray...'"
+- GOOD: "Ensure 'Ocean Spray cranberry' is piped through"
 
 **DON'T skip loop iterations:**
 - BAD: "Repeat for all priority categories"
@@ -238,3 +294,21 @@ If visible:
 **DON'T assume R# numbering without checking:**
 - BAD: Guessing R3 is the third option
 - GOOD: Count from the survey document's response table to confirm R3 is actually the third listed option
+
+**DON'T renumber R# for conditional display questions:**
+- BAD: Meijer is "R2" because it's the second visible grocery option
+- GOOD: Meijer is "R5" because it's the fifth option in the FULL response table
+
+**DON'T default to "Select any" without checking downstream piping:**
+- BAD: "Select any" at S17 Products (when Q301-Q411 pipe "cranberry")
+- GOOD: "Select R1 in C2, Ensure assigned <product> = cranberry" (because downstream piping requires it)
+
+**DON'T be verbose — match the terse reference style:**
+- BAD: "Select R5 'Meijer' (visible since <Channel>='Grocery')"
+- GOOD: "Select R5"
+- BAD: "Ensure R1 'Cranberry' and R2 'Cranberry blends (e.g., Cranberry-Apple, Cranberry-Grape)' are kept together"
+- GOOD: "Ensure R1 & R2 are together"
+
+**DON'T invent question IDs:**
+- BAD: Q204, Q205, Q206 (sequential across batteries)
+- GOOD: Q301, Q302, Q303 (matching survey document's battery numbering)
