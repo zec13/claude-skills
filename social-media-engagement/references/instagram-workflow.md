@@ -1,6 +1,6 @@
 # Instagram Workflow
 
-This reference covers the full Instagram engagement workflow: discovery, qualifying, engagement actions, pacing, and safety.
+This reference covers the full Instagram engagement workflow: discovery, engagement actions, pacing, and safety.
 
 ---
 
@@ -11,52 +11,57 @@ This reference covers the full Instagram engagement workflow: discovery, qualify
 ### How to Browse Explore
 
 1. Click the **Explore** icon (compass) in the left sidebar
-2. Scroll through the grid and look for posts related to the brand's content themes (loaded from the brand context file)
-3. When you spot a relevant post, click into it to see the account
-4. Check the account against the qualifying criteria below
-5. Before following, cross-check the account handle against the **engagement log** to avoid re-following accounts from previous sessions
+2. Scroll through the grid and look for posts related to the brand's audience
+3. When you spot relevant content, engage with it directly — like, follow, comment right from the post
+4. Before following, cross-check the account handle against the **engagement log** to avoid re-following
 
 ### Additional Discovery Methods (mix in occasionally)
 
 - **Suggested accounts:** When visiting a relevant profile, Instagram shows "Suggested for you" below the bio. These are great leads because they're algorithmically related.
-- **Commenters on relevant posts:** People leaving thoughtful comments on niche content are often ideal target accounts. Click through to their profiles.
-- **Competitor followers:** Occasionally browse who's following or commenting on competitor accounts (listed in the brand context file). Their followers are pre-qualified as interested in the niche.
+- **Commenters on relevant posts:** People leaving thoughtful comments on niche content are often ideal accounts to engage with.
+- **Competitor followers:** Occasionally browse who's commenting on competitor accounts (listed in the brand context file).
 
 Vary which discovery method is primary each session. Most sessions should lean on Explore, but mix in the others for variety.
 
 ---
 
-## Qualifying an Account
+## What to Engage With
 
-Before following, check that the account meets **at least 3** of these criteria:
+Engage with posts that feel like they belong in the brand's world. For Table Clay, that means content like:
 
-1. **Active:** Posted within the last 2 weeks
-2. **Engaged audience:** Posts get real comments (not just emoji spam or bots)
-3. **Relevant content:** Posts about topics matching the brand's content themes
-4. **Real person or small brand:** Not a massive brand (50k+ followers). Focus on micro-creators, hobbyists, small businesses, and enthusiasts. The sweet spot is 500-20k followers.
-5. **Target customer signal:** The account looks like someone who matches the brand's target customer profile (loaded from brand context)
-6. **Not a bot:** Has a profile photo, bio, and genuine-looking post history
+- Pottery, ceramics, clay work (throwing, glazing, kiln reveals, handbuilding)
+- Coffee culture (pour-overs, latte art, morning routines, cafe visits)
+- Cute home finds, aesthetic kitchen/table setups
+- DIY and artsy projects (painting, crafting, woodworking, candle making)
+- Handmade goods and small business showcases
+- Cozy lifestyle and mindful living content
+- Family/kids doing creative activities
 
-### Accounts to SKIP
+**The bar is vibes, not metrics.** If the content feels like something the brand's audience would enjoy, engage with it.
+
+### What to Skip
 
 - Obvious bot/spam accounts
-- Accounts with 50k+ followers (they won't notice or reciprocate)
-- Accounts that only post promotional/sales content
-- Accounts in unrelated niches
-- Private accounts (can't see their content to assess relevance)
+- Content in completely unrelated niches (finance, fitness, politics, etc.)
+- Big corporate brand ads or massive influencer promo posts
+- Private accounts (can't see their content)
 - Accounts already in the engagement log for Instagram
+
+### Soft Guideline on Size
+
+Don't waste time checking follower counts. But if it's obviously a massive account (100K+ followers visible at a glance, or a well-known brand/influencer), skip it — they won't notice the engagement. If you can't tell, don't worry about it.
 
 ---
 
 ## Engagement Actions
 
-For each qualifying account:
+Engage **directly from the post in Explore** — no need to visit the creator's profile to evaluate them first. If the content is relevant, engage.
 
-1. **Follow the account**
-2. **Like their most recent post** (or their best recent post if the latest isn't great)
-3. **For 5 of the accounts:** Leave a genuine comment on their post (see `references/comment-guide.md` for writing rules)
+1. **Follow the account** — click Follow right from the post
+2. **Like their post** — double-tap or click the heart
+3. **For 5 of the accounts:** Leave a genuine comment (see `references/comment-guide.md`)
 
-The follow + like is the baseline for every account. Comments are reserved for posts where you have something genuinely specific to say. Don't force comments on posts that don't inspire a natural reaction.
+Follow + like is the baseline. Comments are reserved for posts where you have something genuinely specific to say. Don't force comments on posts that don't inspire a natural reaction.
 
 ---
 
@@ -70,13 +75,13 @@ These limits are non-negotiable. Never exceed them in a single session.
 | Likes | 15 | 30 |
 | Comments | 5 | 10 |
 
-**Max 2 sessions per day** (morning + evening). Never run more than 2 Instagram sessions in a single day.
+**Max 2 sessions per day** (morning + evening).
 
 ---
 
 ## Pacing
 
-Instagram flags rapid-fire actions. Space out engagement to mimic natural behavior:
+Space out engagement to mimic natural behavior:
 
 - **30-60 seconds** between follows
 - **15-30 seconds** between likes
@@ -97,21 +102,19 @@ The goal is to look like a real person casually browsing and engaging, not a bot
 
 ## Safety and Stop Triggers
 
-If you encounter ANY of these, **stop the session immediately** and inform the user:
+If you encounter ANY of these, **stop immediately** and inform the user:
 
-- **"Action Blocked"** message
-- **CAPTCHA** or phone verification request
-- **Unusual loading times** or repeated errors
-- **"Try Again Later"** message
-- Any warning about **suspicious activity**
-- Being **logged out** unexpectedly
+- "Action Blocked" message
+- CAPTCHA or phone verification
+- Unusual loading times or repeated errors
+- "Try Again Later" message
+- Any warning about suspicious activity
+- Being logged out unexpectedly
 
-**Cool-down after being flagged:** Wait at least **4-6 hours** before the next Instagram session. If flagged twice in one day, skip the rest of the day entirely.
-
-Do not attempt to work around blocks or re-try flagged actions. Instagram's detection escalates with repeated violations.
+**Cool-down if flagged:** 4-6 hours minimum. Flagged twice in one day — skip the rest of the day entirely.
 
 ---
 
 ## Time Per Session
 
-A typical session takes **15-20 minutes** of browser work. Don't rush it. The pacing rules above naturally spread the session across this timeframe.
+15-20 minutes. The pacing rules spread the session naturally. Don't rush.
