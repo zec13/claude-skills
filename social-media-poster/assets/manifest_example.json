@@ -1,0 +1,62 @@
+[
+  {
+    "media": ["/path/to/content/monday_morning.jpg"],
+    "caption": "Starting the week strong! Check out what's new. #MondayMotivation #NewArrivals"
+  },
+  {
+    "media": ["/path/to/content/product_showcase.jpg", "/path/to/content/detail_shot.jpg"],
+    "caption": "Swipe to see the details that make all the difference. #ProductDesign #Quality"
+  },
+  {
+    "media": ["/path/to/content/behind_scenes.mp4"],
+    "caption": "Ever wonder how it's made? Here's a look behind the curtain. #BTS #Process"
+  },
+  {
+    "media": ["/path/to/content/customer_review.jpg"],
+    "caption": "Don't just take our word for it — hear from our customers. #Testimonial #FiveStars"
+  },
+  {
+    "media": ["/path/to/content/tip_of_the_day.jpg"],
+    "caption": "Pro tip: pair it with your morning routine for best results. #LifeHack #Tips"
+  },
+  {
+    "media": ["/path/to/content/flat_lay.jpg", "/path/to/content/in_use.jpg", "/path/to/content/packaging.jpg"],
+    "caption": "The full picture — from box to daily life. #Unboxing #Lifestyle"
+  },
+  {
+    "media": ["/path/to/content/team_photo.jpg"],
+    "caption": "The team behind the magic. We're passionate about what we do. #TeamWork #MeetTheTeam"
+  },
+  {
+    "media": ["/path/to/content/tutorial.mp4"],
+    "caption": "Quick tutorial: 3 ways to use our product you didn't know about. #HowTo #Tutorial"
+  },
+  {
+    "media": ["/path/to/content/sale_announcement.jpg"],
+    "caption": "Flash sale alert! 24 hours only. Don't miss out. #Sale #LimitedTime"
+  },
+  {
+    "media": ["/path/to/content/community_repost.jpg"],
+    "caption": "Love seeing how our community uses the product! Keep tagging us. #Community #UserGenerated"
+  },
+  {
+    "media": ["/path/to/content/weekend_vibes.jpg"],
+    "caption": "Weekend mode: activated. What are your plans? #WeekendVibes #Relax"
+  },
+  {
+    "media": ["/path/to/content/new_arrival.mp4"],
+    "caption": "Just dropped. The one you've been waiting for. #NewDrop #JustLaunched"
+  },
+  {
+    "media": ["/path/to/content/comparison.jpg", "/path/to/content/before_after.jpg"],
+    "caption": "Before and after — the transformation speaks for itself. #Results #BeforeAfter"
+  },
+  {
+    "media": ["/path/to/content/quote_card.jpg"],
+    "caption": "Words to live by. What's your mantra this week? #Inspiration #QuoteOfTheDay"
+  },
+  {
+    "media": ["/path/to/content/sneak_peek.jpg"],
+    "caption": "Something exciting is coming. Can you guess what it is? #ComingSoon #SneakPeek"
+  }
+]

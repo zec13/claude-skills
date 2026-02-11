@@ -14,3 +14,11 @@ __pycache__/
 *.pyc
 *.pyo
 .env
+
+# Social media poster runtime files
+social-media-poster/assets/schedule_queue.json
+social-media-poster/assets/scheduled_media/*
+!social-media-poster/assets/scheduled_media/.gitkeep
+social-media-poster/assets/.scheduler.lock
+social-media-poster/logs/*
+!social-media-poster/logs/.gitkeep
