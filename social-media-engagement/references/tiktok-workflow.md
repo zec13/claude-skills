@@ -4,6 +4,16 @@ This reference covers the full TikTok engagement workflow: discovery, engagement
 
 ---
 
+## Pre-Session Setup
+
+Before engaging with any accounts:
+
+1. Read the engagement log (`engagement-log.csv`) and note all previously engaged TikTok handles
+2. Keep that list in memory for the entire session — do NOT re-read the CSV between engagements
+3. Navigate to `https://www.tiktok.com/` (For You feed) or TikTok Search if the FYP is still off-niche (see Discovery below)
+
+---
+
 ## Discovery
 
 Discovery method depends on how trained the account's FYP algorithm is. A brand-new or lightly-used TikTok account will have a generic FYP full of mainstream content (pranks, sports, ads) that is completely irrelevant to the brand's niche. The algorithm needs engagement signals before it starts surfacing niche content.

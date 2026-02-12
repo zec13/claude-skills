@@ -4,6 +4,16 @@ This reference covers the full Facebook engagement workflow. All actions are per
 
 ---
 
+## Pre-Session Setup
+
+Before engaging with any Reels:
+
+1. Read the engagement log (`engagement-log.csv`) and note all previously engaged Facebook Page names
+2. Keep that list in memory for the entire session — do NOT re-read the CSV between engagements
+3. Navigate to `https://www.facebook.com/reel/`
+
+---
+
 ## Discovery: Facebook Reels
 
 ### How to Access
@@ -35,7 +45,7 @@ Engage with Reels that feel like they belong in the brand's world. For Table Cla
 
 ### Niche Assessment
 
-Before engaging with a Reel, take a screenshot and quickly assess:
+Before engaging with a Reel, visually assess (no need to screenshot):
 
 1. Does this content visually fit the brand's world? (pottery, ceramics, coffee, DIY, cozy lifestyle, handmade, home decor)
 2. Is this a personal/small creator or an obvious mega-brand?
@@ -51,34 +61,31 @@ Don't waste time checking follower counts. But if it's obviously a massive accou
 
 ## Navigating Between Reels
 
-Facebook Reels navigation is unreliable. Different methods work in different contexts, and the best approach depends on what's happening on screen. Use this priority order:
+Facebook Reels navigation can be inconsistent. Use this priority order:
 
-### Primary Method: "Next Card" Button
+### Primary Method: Down Arrow Button
 
-1. Use `find` tool with query **"Next Card"** or **"Next card button"**
+1. Click the **down arrow** button on the right side of the Reels player (the `⌄` icon)
+2. Wait 1-2 seconds for the next Reel to snap into view
+3. If the feed only partially advanced, click the down arrow again
+
+This is the most reliable method for fully advancing to the next Reel.
+
+### Secondary Method: "Next Card" Button
+
+1. Use `find` tool with query **"Next Card"**
 2. Click the returned reference
-3. Wait 1-2 seconds for the next Reel to load
-4. Take a screenshot to confirm new content appeared
+3. The feed will begin transitioning — if it only partially advances, press `ArrowDown` to complete the snap
 
-This is the most reliable method. The "Next Card" button is a persistent navigation element in the Reels player that consistently advances to the next Reel regardless of focus state.
+**Known behavior:** Next Card sometimes advances the feed partway without fully snapping. Follow up with ArrowDown if needed, without taking a screenshot to verify.
 
-### Secondary Method: ArrowDown Key
+### Tertiary Method: ArrowDown Key
 
 1. Click on an empty area of the Reel first (not on any interactive element) to ensure the Reel player has focus
 2. Press `ArrowDown`
 3. Wait 1-2 seconds
-4. Take a screenshot to verify new content loaded
 
 **Known issue:** ArrowDown does NOT work when the comment input or any text field has focus. Always clear focus first (click outside or press `Escape`) before attempting ArrowDown.
-
-### Tertiary Method: Scroll
-
-1. Place cursor in the center of the Reel
-2. Scroll down (scroll_amount: 3-5)
-3. Wait 1-2 seconds
-4. Take a screenshot
-
-**Known issue:** Scrolling sometimes cycles between 3-4 previously seen Reels instead of loading new content. If this happens twice in a row, switch to a different method.
 
 ### Fallback: Fresh Feed Reset
 
@@ -86,8 +93,7 @@ If navigation becomes stuck (same Reels cycling, content not advancing after 2-3
 
 1. Navigate directly to `https://www.facebook.com/reel/`
 2. This forces Facebook to load a completely fresh Reels feed
-3. Take a screenshot to verify new content
-4. Resume normal "Next Card" navigation
+3. Resume normal navigation
 
 ### Navigation After Commenting
 
@@ -95,7 +101,7 @@ Commenting is the action most likely to break navigation, because the comment in
 
 1. Press `Escape` to close/defocus the comment input
 2. Click on an empty area of the Reel player to restore player focus
-3. Use the "Next Card" button (primary method) to advance -- do NOT rely on ArrowDown immediately after commenting
+3. Use the down arrow button or "Next Card" button to advance -- do NOT rely on ArrowDown immediately after commenting
 
 ---
 
@@ -105,31 +111,10 @@ Engage **directly from the Reel** -- no need to visit the creator's profile firs
 
 ### 1. React to the Reel
 
-Facebook reactions require a hover-to-reveal interaction. Here's the exact sequence:
-
-#### How to React (Step-by-Step)
-
-**For a simple Like:**
 1. Use `find` tool with query **"Like button"** on the current Reel
-2. Click the returned reference
-3. The thumbs-up Like is applied immediately
+2. Click the returned reference to apply a simple Like (thumbs up)
 
-**For Love, Care, or other reactions:**
-1. Use `find` tool with query **"Like button"** on the current Reel
-2. **Hover** (do not click) on the Like button reference for 1-2 seconds
-3. A reaction picker bar will appear above the button showing emoji options
-4. Take a screenshot to see the picker and identify positions
-5. Click the desired reaction:
-   - **Love** (heart) is typically the second icon from the left
-   - **Care** (hug face) is typically the third icon
-6. Wait 1 second to confirm the reaction registered
-
-**If the reaction picker doesn't appear after hovering:**
-- Try hovering slightly above or below the Like button
-- Hold the hover for a full 2 seconds
-- If it still doesn't appear, fall back to a simple Like (click)
-
-#### Reaction Selection Guide
+**Reaction type guidance:**
 
 | Reaction | When to Use | Frequency |
 |----------|-------------|-----------|
@@ -139,80 +124,71 @@ Facebook reactions require a hover-to-reveal interaction. Here's the exact seque
 
 **Never use:** Haha, Wow, Sad, or Angry -- too easy to misread coming from a brand Page.
 
-#### Stale Reference Warning
+**If you want to attempt Love or Care:** Hover the Like button for 2 full seconds. If a reaction picker bar appears above the button, click your choice (Love is typically second from left, Care is typically third). If no picker appears after 2 seconds, click the Like button instead -- don't retry hover. The reaction picker is unreliable on Facebook, and defaulting to Like is fine.
 
-The Like button reference can become stale if the feed has scrolled or loaded new content in the background. **Always re-query the Like button using `find` after navigating to a new Reel.** Never reuse a Like button reference from a previous Reel -- it may target the wrong Reel's button and cause the page to jump unexpectedly.
+**Important:** Never reuse a Like button reference from a previous Reel. Always re-query with `find` after navigating to a new Reel -- stale references may target the wrong Reel's button.
 
 ### 2. Follow the Creator's Page
 
-#### How to Follow (Step-by-Step)
-
 1. Use `find` tool with query **"Follow button"**
-2. If multiple results are returned, use the one closest to the creator name overlay on the current Reel (take a screenshot if needed to confirm)
-3. Click the Follow button reference
-4. Wait 1 second and verify the button text changed to "Following"
+2. Click the returned reference
+3. The button text will change to "Following"
 
-**Common issues:**
-- The Follow button may be near other clickable elements (music/audio links, creator name links). If you accidentally open a popup, close it with `Escape` or `find` the X/close button, then re-query and click Follow
-- If the Follow button isn't visible on the Reel overlay, skip the follow for this Reel -- don't navigate away to the profile page
-- If the creator is already followed (button shows "Following"), skip and move on -- do NOT unfollow
+If you accidentally click a wrong element (audio link, profile link, etc.), close the popup with `Escape` and re-query with `find`.
+
+If the Follow button isn't visible on the Reel overlay, skip the follow for this Reel -- don't navigate away to the profile page.
+
+If the creator is already followed (button shows "Following"), skip and move on -- do NOT unfollow.
 
 ### 3. Comment (Selectively)
 
 **4 comments per session max** (see `references/comment-guide.md` for writing guidelines)
 
-#### How to Comment (Step-by-Step)
+1. Use `find` tool with query **"Comment button"** to open the comment section
+2. Wait 1-2 seconds for the comment input to appear
+3. Use `find` tool with query **"comment input"** or **"Write a comment"** or **"Comment as [Page Name]"**
+4. Click the input to focus it
+5. Type your comment
+6. Use `find` tool with query **"Send"** or **"Post"** or **"Comment"** button to locate the submit button
+7. Click the send button
+8. Wait 1-2 seconds to confirm the comment posted
+9. Press `Escape` or click outside the comment area to release focus before navigating
 
-1. Use `find` tool with query **"Comment"** or **"Comment button"** on the current Reel
-2. Click the comment button/icon to open the comment section
-3. Wait 1-2 seconds for the comment input to appear
-4. Use `find` tool with query **"comment input"** or **"Write a comment"**
-5. Click the comment input to focus it
-6. Type your comment using the `type` action
-7. Use `find` tool with query **"Send"** or **"Submit"** or **"Post comment button"** (it may be an arrow/send icon)
-8. Click the send button
-9. Wait 1-2 seconds to confirm the comment posted
-10. **Critical:** Press `Escape` or click outside the comment area to release focus before attempting to navigate to the next Reel
+**Important: Do NOT press Enter to submit comments.** On Facebook, pressing Enter triggers the keyboard shortcuts overlay instead of submitting. Always use the dedicated send button (typically a small arrow icon to the right of the input field).
 
-**If the comment input doesn't appear after clicking the comment icon:**
-- Try clicking the comment icon again
-- Take a screenshot to see if a different UI element opened
-- If the comments section opened but the input isn't visible, scroll down within the comment section
-
-**If the send button is hard to find:**
-- Look for a small arrow icon or paper plane icon to the right of the comment input
-- Try `find` with queries: "Send", "Post", "Submit", or "arrow button near comment"
-
-#### Comment on Reels where you have something specific to say about what you SAW in the video. Since these are videos, reference the content -- a technique, a transformation, a satisfying moment, a specific detail. Don't comment on every Reel you react to.
+Comment on Reels where you have something specific to say about what you SAW in the video. Since these are videos, reference the content -- a technique, a transformation, a satisfying moment, a specific detail. Don't comment on every Reel you react to.
 
 ---
 
-## Engagement Depth Variation
+## Engagement Pattern Variation
 
-Not every Reel gets the same level of engagement. Vary the depth to look natural:
+Not every Reel gets the same level of engagement. Vary your pattern to look natural:
 
-| Depth Level | Actions | Approximate Split |
-|-------------|---------|-------------------|
-| Light | React only | ~40% of engaged Reels |
-| Medium | React + Follow | ~35% of engaged Reels |
-| Full | React + Follow + Comment | ~25% of engaged Reels (limited by 4 comment max) |
+- **React to most Reels** -- this is the baseline engagement
+- **Follow roughly 60-70% of the Reels you react to** -- skip follows on some Reels to avoid appearing robotic
+- **Comment on approximately 4 Reels per session** -- roughly 1 comment per 3-4 engaged Reels
 
-When doing multiple actions on a single Reel, perform them in this order with pauses between:
-1. **React** first (this is quick and natural)
-2. Wait 10-15 seconds
-3. **Follow** the Page
-4. Wait 15-30 seconds
-5. **Comment** (if this is a Reel worth commenting on)
+Mix it up:
+
+- Sometimes react only, no follow
+- Sometimes react and follow, no comment
+- Sometimes react, follow, and comment all three
+- Occasionally skip a niche-fit Reel entirely -- this makes your engagement pattern more organic
+
+When doing multiple actions on a single Reel:
+1. **React** first
+2. **Follow** the Page (no explicit wait needed between react and follow)
+3. **Comment** (if warranted) -- wait 15-30 seconds after posting before moving to next Reel
 
 ---
 
 ## Session Flow
 
-1. **Navigate** to `https://www.facebook.com/reel/`
-2. **Take a screenshot** to see the first Reel
+1. **Read engagement log** and note previously engaged Facebook Pages
+2. **Navigate** to `https://www.facebook.com/reel/`
 3. **Assess niche fit** -- does this content belong in the brand's world?
 4. **Engage** if relevant -- react, follow, and selectively comment
-5. **Advance** to the next Reel using the "Next Card" button (primary method)
+5. **Advance** to the next Reel using the down arrow button (primary method)
 6. **Repeat** until session limits are reached
 7. Track your counts: reactions (target 12), follows (target 8), comments (target 4)
 
@@ -236,13 +212,22 @@ When you encounter content that doesn't fit the brand's niche, simply advance to
 
 ## Pacing
 
-- **45-90 seconds** between Page follows
-- **20-40 seconds** between reactions
-- **1-3 minutes** between comments
-- When doing multiple actions on a single Reel (react + follow + comment), space by **15-30 seconds** between each action
+- **No explicit wait between react and follow on the same Reel** -- the time to locate and click both buttons is natural pacing (~5-10 seconds)
+- **20-40 seconds between reactions on different Reels** -- use this time to assess the next Reel's niche fit
+- **15-30 seconds after posting a comment** before advancing to the next Reel -- comments are high-signal actions and benefit from a brief pause
 - **Watch each Reel for at least 3-5 seconds** before engaging or scrolling past
 
-Use wait time naturally -- you're watching a video, assessing the content, deciding whether to engage. The pacing should feel like browsing, not like executing a checklist.
+The natural time spent scrolling, finding Reels, and assessing content provides sufficient spacing between engagements. Don't add unnecessary artificial waits beyond what's listed above.
+
+---
+
+## Engagement Log Format
+
+After each session, append to `engagement-log.csv` following these rules:
+
+1. **One row per account per session.** Consolidate all actions on one account into a single row using the `action_taken` field (e.g., "page_follow+react", "page_follow+react+comment"). Do NOT log each action as separate rows for the same account.
+2. **Always include time (HH:MM).** Every row must have a timestamp.
+3. **Keep format consistent** across all platforms.
 
 ---
 
@@ -264,19 +249,15 @@ If you encounter **ANY** of these, **stop immediately** and inform the user:
 
 ---
 
-## Troubleshooting Quick Reference
+## Handling Common Issues
 
-| Problem | Solution |
-|---------|----------|
-| ArrowDown doesn't advance Reel | Click empty area first to clear focus, or use "Next Card" button via `find` |
-| Same Reels cycling on scroll | Navigate to `https://www.facebook.com/reel/` for fresh feed |
-| Clicked wrong element (audio link, profile link, etc.) | Close popup with Escape or X button, re-query with `find` |
-| Reaction picker doesn't appear on hover | Hold hover for 2 full seconds; if still nothing, fall back to simple Like |
-| Follow button not visible | Skip follow for this Reel, move on |
-| Comment input doesn't get focus | Click directly on the input field, or try `find` with "Write a comment" |
-| Navigation broken after commenting | Press Escape, click empty area, use "Next Card" button (not ArrowDown) |
-| Like button reference targets wrong Reel | Always re-query `find` after navigating; never reuse refs from a previous Reel |
-| Page jumps to unexpected content | A stale reference was clicked; navigate to `https://www.facebook.com/reel/` and restart |
+- **Navigation isn't advancing:** Try the down arrow button, then ArrowDown key, then fresh feed reset (`https://www.facebook.com/reel/`)
+- **Reaction picker unreliable:** Default to simple Like; hover is optional
+- **Follow button not visible:** Skip the follow for this Reel -- no need to profile-visit
+- **Comment submission fails:** Ensure you're clicking the send button (not pressing Enter) -- Enter triggers the keyboard shortcuts overlay on Facebook
+- **Feed cycles through same Reels:** Navigate directly to `https://www.facebook.com/reel/` for a fresh feed
+- **Clicked wrong element:** Close with `Escape`, re-query with `find`, try again
+- **Stale reference clicked wrong Reel:** Navigate to `https://www.facebook.com/reel/` and restart
 
 ---
 
@@ -289,4 +270,4 @@ If you encounter **ANY** of these, **stop immediately** and inform the user:
 
 ## Time Per Session
 
-15-25 minutes. The pacing rules spread actions naturally. Don't rush.
+12-18 minutes. The pacing rules spread actions naturally. Don't rush.
