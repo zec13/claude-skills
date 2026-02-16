@@ -1,7 +1,7 @@
 ---
 name: native-image-ad-generator
 description: |
-  End-to-end native image ad creator. Takes a brand name and product, finds the research dossier in Desktop/Brands/, generates 10-20 emotionally resonant static image ad concepts with NanoBanana text-to-image prompts, auto-selects the top 5 based on brand strategy fit, then uses Claude in Chrome to generate 5 final images in Google Gemini (one per concept, 4:5 ratio) and saves all outputs to Desktop/Ad Outputs/[Brand]/[Product]/. Runs fully autonomously — no user approval needed mid-workflow.
+  End-to-end native image ad creator. Takes a brand name and product, automatically pulls the brand's research dossier from the GitHub repo (github.com/Nsf34/claude-skills/Brands/), generates 10-20 emotionally resonant static image ad concepts with NanoBanana text-to-image prompts, auto-selects the top 5 based on brand strategy fit, then uses Claude in Chrome to generate 5 final images in Google Gemini (one per concept, 4:5 ratio) and saves all outputs to Native Image Outputs/[Brand]/[Product]/ in the user's workspace folder. Runs fully autonomously — no user approval needed mid-workflow.
 
   TRIGGERS: native image ads, static image ads, ad concepts, NanoBanana, image ad generator, generate ads, create ad images, ad variations, text to image ads, run ad generator, image ads for [brand], generate image ads
 
@@ -10,19 +10,19 @@ description: |
 
 # Native Image Ad Generator
 
-Fully autonomous workflow: brand + product in, finished ad images out. Reads the research dossier, generates concepts, scores and selects the top 5, generates one image per concept via Gemini (4:5 ratio), and saves everything to the desktop. No mid-workflow approval gates — runs silently from input to output.
+Fully autonomous workflow: brand + product in, finished ad images out. Clones the brand research from GitHub, generates concepts, scores and selects the top 5, generates one image per concept via Gemini (4:5 ratio), and saves everything to Native Image Outputs/. No mid-workflow approval gates — runs silently from input to output.
 
 ## Quick Reference
 
 | Step | What Happens | User Interaction |
 |---|---|---|
 | 1. Input | Receive brand name + product name | User provides these |
-| 2. Find research | Locate dossier in `Desktop/Brands/[BrandName]/` | None (auto) |
+| 2. Fetch research | Clone/pull brand dossier from GitHub repo | None (auto) |
 | 3. Analyze | Deep-read dossier for strategy inputs | None (auto) |
 | 4. Generate concepts | Create 10-20 concepts with NanoBanana prompts | None (auto) |
 | 5. Auto-select top 5 | Score, rank, and select — no approval gate | None (auto) |
 | 6. Generate images | Gemini via browser — 1 image per concept (4:5), save all options | None (auto) |
-| 7. Save & deliver | Save to `Desktop/Ad Outputs/[Brand]/[Product]/` with summary | Link to folder |
+| 7. Save & deliver | Save to `Native Image Outputs/[Brand]/[Product]/` with summary | Link to folder |
 
 ## Autonomy Rules
 
@@ -38,26 +38,51 @@ The only exceptions where you should stop and ask:
 ### Step 1: Receive Input
 
 The user provides:
-- **Brand name** (e.g., "Table Clay", "Aniwove", "Vertifarm")
+- **Brand name** (e.g., "TableClay", "Aniwove", "LeafLofts")
 - **Product name** (e.g., "Ceramic Travel Cup", "Custom Pet Mug")
 
-If the user only provides a brand name, check `Desktop/Brands/[BrandName]/` for available dossiers. If there's exactly one, use it. If multiple exist, ask which product.
+If the user only provides a brand name, fetch the brand folder from GitHub (Step 2) and check for available dossiers. If there's exactly one, use it. If multiple exist, ask which product.
 
-### Step 2: Find the Research Dossier
+### Step 2: Fetch the Research Dossier from GitHub
 
-Research dossiers live in `Desktop/Brands/` on the user's computer:
+Research dossiers are stored in the GitHub repository at `github.com/Nsf34/claude-skills/Brands/`. The skill automatically clones or pulls the correct brand folder.
 
+**GitHub repo structure:**
 ```
-Desktop/Brands/
-├── [BrandName]/
-│   ├── [Product Name] — Deep Research Dossier.docx
-│   └── ...
+github.com/Nsf34/claude-skills/
+└── Brands/
+    ├── Aniwove/
+    │   └── research/
+    │       ├── ANiwove — Deep Research Dossier.docx
+    │       └── Anime Woven Tapestry — Deep Research Dossier.docx
+    ├── LeafLofts/
+    │   └── research/
+    │       ├── Leaf Lofts — Deep Research Dossier.docx
+    │       └── Home Vertical Garden — Deep Research Dossier.docx
+    ├── TableClay/
+    │   └── research/
+    │       ├── Table Clay Ceramic Travel Cup — Deep Research Dossier.docx
+    │       ├── Custom Pet Mug — Deep Research Dossier.docx
+    │       └── Table Clay Mini Pottery Wheel Starter Bundle — Deep Research Dossier (2).docx
+    ├── ScrollMerch/
+    │   └── research/
+    │       └── Scroll Merch — Deep Research Dossier.docx
+    └── PrepPack/
+        └── research/
+            └── PrepPack — Deep Research Dossier.docx
 ```
 
-**Locating the file:**
-1. List `Desktop/Brands/[BrandName]/` (try casing variations: exact, title case, lowercase)
-2. Match `.docx` files containing "Deep Research Dossier" to the user's product name (fuzzy match — "Travel Cup" matches "Ceramic Travel Cup — Deep Research Dossier.docx")
-3. If no match or ambiguous, show available files and ask
+**Fetching the dossier:**
+1. Clone the repo (sparse checkout if possible) or pull latest: `git clone https://github.com/Nsf34/claude-skills.git` into a temporary working directory
+2. Navigate to `Brands/[BrandName]/research/` (try casing variations: exact, title case, PascalCase)
+3. Match `.docx` files containing "Deep Research Dossier" to the user's product name (fuzzy match — "Travel Cup" matches "Table Clay Ceramic Travel Cup — Deep Research Dossier.docx")
+4. Copy the matched dossier to the working directory for processing
+5. If no match or ambiguous, list available dossiers from the repo and ask the user which one
+
+**If the repo clone fails:**
+- Check if the repo was already cloned in this session (reuse it)
+- If network is unavailable, fall back to checking `Desktop/Brands/[BrandName]/` locally
+- If neither works, ask the user to provide the dossier file directly
 
 ### Step 3: Analyze the Research Dossier
 
@@ -244,7 +269,7 @@ For each of the 5 selected concepts, execute this exact sequence:
    → Verify file exists in ~/Downloads/ (check newest Gemini_Generated_Image_*.png)
 
 6. COPY TO OUTPUT FOLDER
-   → Copy from ~/Downloads/ to Desktop/Ad Outputs/[Brand]/[Product]/4x5/Concept[N]_[ShortName].png
+   → Copy from ~/Downloads/ to Native Image Outputs/[Brand]/[Product]/Concept[N]_[ShortName].png
 
 7. REPEAT from step 1 for next concept
 ```
@@ -276,10 +301,10 @@ For each of the 5 selected concepts, execute this exact sequence:
 
 ### Step 7: Save Outputs & Deliver
 
-Save everything to the user's desktop in this structure:
+Save everything to a `Native Image Outputs/` folder in the user's workspace (the folder they gave Claude permission to work in):
 
 ```
-Desktop/Ad Outputs/
+[Workspace Folder]/Native Image Outputs/
 └── [Brand Name]/
     └── [Product Name]/
         ├── Concept1_[ShortName].png
@@ -291,7 +316,7 @@ Desktop/Ad Outputs/
 ```
 
 **Folder structure rules:**
-- Create `Desktop/Ad Outputs/` if it doesn't exist
+- Create `Native Image Outputs/` in the workspace root if it doesn't exist
 - Brand folder uses the brand's display name (spaces OK)
 - Product folder uses the product's display name (spaces OK)
 - Image files: `Concept[N]_[ShortName].png` — sanitize concept name (underscores, no special chars)
@@ -336,12 +361,12 @@ Generated: [Date]
 
 After saving everything, provide a single completion message with a link to the output folder. Keep it brief:
 
-"Done — 5 ad concepts generated in 4:5 format. [View your ad images](computer:///path/to/Ad Outputs/Brand/Product/)"
+"Done — 5 ad concepts generated in 4:5 format. [View your ad images](computer:///path/to/Native Image Outputs/Brand/Product/)"
 
 ## Error Handling
 
 ### Research dossier not found
-List contents of `Desktop/Brands/` and subfolders. Ask user to confirm brand/product name.
+List contents of the GitHub repo's `Brands/` folder. If the repo is unreachable, check `Desktop/Brands/` locally as a fallback. Ask user to confirm brand/product name.
 
 ### Gemini not logged in
 Stop and ask user to log into Google in Chrome. Resume once confirmed.
